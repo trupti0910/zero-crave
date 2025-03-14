@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zero Crave | Herbal Medicated icecreams</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    header {
+      background-color: #ffccdd;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #d63384;
+    }
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+      color: #555;
+    }
+    nav {
+      background-color: #fff0f5;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #d63384;
+    }
+    nav a:hover {
+      color: #a61e4d;
+    }
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .search-bar input {
+      width: 50%;
+      padding: 0.6rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+    .card {
+      background-color: white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 1rem;
+    }
+    .card-content h3 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: #4a148c;
+    }
+    .card-content p {
+      margin: 0.5rem 0;
+      color: #555;
+    }
+    .price {
+      color: #28a745;
+      font-weight: bold;
+    }
+    .contact {
+      text-align: center;
+      padding: 2rem;
+    }
+    .contact a {
+      background-color: #d63384;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    .contact a:hover {
+      background-color: #a61e4d;
+    }
+    .order-form {
+      padding: 2rem;
+      background-color: #fffafc;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .order-form h2 {
+      text-align: center;
+      color: #d63384;
+    }
+    .order-form label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    .order-form input, .order-form select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+    }
+    .order-form button {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #d63384;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+    .order-form button:hover {
+      background-color: #a61e4d;
+    }
+  </style>
+  <script>
+    function filterProducts() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const title = card.querySelector('h3').innerText.toLowerCase();
+        const description = card.querySelector('p').innerText.toLowerCase();
+        if (title.includes(query) || description.includes(query)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+    function calculateDiscount() {
+  // Get the selected price from the flavor dropdown
+  const flavorSelect = document.getElementById('flavor');
+  const selectedPrice = parseInt(flavorSelect.value); // Get the price of selected flavor
+
+  // Get the quantity entered by the user
+  const quantity = parseInt(document.getElementById('quantity').value);
+
+  // Calculate the total price (without discount for now)
+  let totalPrice = selectedPrice * quantity;
+
+  // Display the updated total price
+  document.getElementById('priceDisplay').textContent = `Total Price: ₹${totalPrice} (Freebie included!)`;
+}
+
+// Optional: Set initial price when the page loads
+window.onload = function() {
+  calculateDiscount();  // Ensure price is updated when the page loads with default values
+}
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Zero Crave</h1>
+    <p>Chill Out Without Calories - Herbal Medicated icecreams</p>
+  </header>
+
+  <nav>
+    <a href="#products">Products</a>
+    <a href="#order">Order Now</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Search for icecream flavors...">
+  </div>
+
+  <section id="products" class="products">
+    <div class="card">
+      <img src="images/Mint Chocolate.jpeg" alt="Mint Chocolate">
+      <div class="card-content">
+        <h3>Mint Chocolate</h3>
+        <p>Refreshing mint with choco chips. Diabetic-friendly, sugar-free, fiber-rich.</p>
+        <p class="price">₹110</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/Guava1.jpeg" alt="Dragon Fruit">
+      <div class="card-content">
+        <h3>Guava Mint</h3>
+        <p>Exotic taste with herbal essence. No preservatives, low GI.</p>
+        <p class="price">₹115</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/Dragon_fruit.jpeg" alt="Guava">
+      <div class="card-content">
+        <h3>Dragon Fruit Delight</h3>
+        <p>Relaxing chamomile with berry burst. Naturally flavored.</p>
+        <p class="price">₹120</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/Lemon.jpeg" alt="Chamomile Berry">
+      <div class="card-content">
+        <h3>Lemon Zest Icecream</h3>
+        <p>Relaxing chamomile with berry burst. Naturally flavored.</p>
+        <p class="price">₹120</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="products" class="products">
+    <div class="card">
+      <img src="images/Black Current.jpeg" alt="Black Current">
+      <div class="card-content">
+        <h3>Black Current</h3>
+        <p>Refreshing mint with choco chips. Diabetic-friendly, sugar-free, fiber-rich.</p>
+        <p class="price">₹110</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/Orange Zest.jpeg" alt="Orange Zest">
+      <div class="card-content">
+        <h3>Orange Zest</h3>
+        <p>Exotic taste with herbal essence. No preservatives, low GI.</p>
+        <p class="price">₹115</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/rosemerry.jpeg" alt="Rosemary">
+      <div class="card-content">
+        <h3>Rosemary</h3>
+        <p>Relaxing chamomile with berry burst. Naturally flavored.</p>
+        <p class="price">₹120</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/Blueberry.jpeg" alt="Blueberry">
+      <div class="card-content">
+        <h3>Blueberry</h3>
+        <p>Relaxing chamomile with berry burst. Naturally flavored.</p>
+        <p class="price">₹120</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="order" class="order-form">
+    <h2>Order Your icecreams</h2>
+    <label for="name">Name</label>
+    <input type="text" id="name" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" required>
+
+    <!-- Product Dropdown -->
+<label for="flavor">Choose Flavor</label>
+<select id="flavor" onchange="calculateDiscount()">
+  <option value="130">Mint Chocolate - ₹130</option>
+  <option value="135">Guava Mint - ₹135</option>
+  <option value="140">Dragon Fruit Delight - ₹140</option>
+  <option value="145">Lemon Zest Icecream - ₹145</option>
+  <option value="130">Black Current - ₹130</option>
+  <option value="135">Orange Zest - ₹135</option>
+  <option value="140">Rosemary - ₹140</option>
+  <option value="145">Blueberry - ₹145</option>
+</select>
+
+<!-- Quantity Input -->
+<label for="quantity">Quantity</label>
+<input type="number" id="quantity" min="1" value="1" onchange="calculateDiscount()">
+
+<!-- Total Price Display -->
+<p id="priceDisplay">Total Price: ₹130 (Freebie included!)</p>
+
+<!-- Place Order Button -->
+<button type="submit">Place Order</button>
+
+
+  </section>
+
+  <section id="contact" class="contact">
+    <a href="mailto:zerocrave9124@gmail.com">Contact Us</a>
+  </section>
+</body>
+</html>
